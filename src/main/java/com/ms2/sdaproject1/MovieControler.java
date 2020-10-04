@@ -1,4 +1,4 @@
-package com.ms2.sdaproject1.Controler;
+package com.ms2.sdaproject1;
 
 import com.ms2.sdaproject1.Movie;
 import com.ms2.sdaproject1.MovieNotFoundException;
@@ -9,13 +9,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 
 import java.util.*;
 
 
-@RestController
+@Controller
 public class MovieControler {
     @Autowired //gdy nie ma konstruktora MovieRepository w klasie to trzeba to dodać.
     MovieRepository movieRepository;
@@ -35,13 +36,15 @@ public class MovieControler {
     //wyświetlanie danego filmy o podanym id
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/movies/{id}")
-    public Movie filmId (@PathVariable Integer id) throws MovieNotFoundException{
     //@PathVariable odnosi się do ID podanego w body wyżej
-        return movieRepository.getMovie(id);
+    public String filmId (@PathVariable Integer id, Model model) throws MovieNotFoundException{
+        model.addAttribute("movie",movieRepository.getMovie(id));
+        return "movie";
     }
 
     //wyświetlanie całej listy
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     @GetMapping("/movies/all")
     public List<Movie> list (){
          return movieRepository.movieList();
@@ -63,6 +66,14 @@ public class MovieControler {
     @DeleteMapping("/movies/{id}")
     public void delete(@PathVariable Integer id) throws MovieNotFoundException{
         movieRepository.deleteMovie(id);
+    }
+
+    //testowy controler dla thymleaf
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/test")
+    public String test (Model model){
+        model.addAttribute("hello","JIM");
+        return "movies";
     }
 
 }
