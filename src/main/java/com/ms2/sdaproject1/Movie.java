@@ -1,5 +1,7 @@
 package com.ms2.sdaproject1;
 
+import java.util.Random;
+
 public class Movie {
     String title;
     Integer year;
@@ -8,6 +10,8 @@ public class Movie {
     public Movie(String title, Integer year) {
         this.title = title;
         this.year = year;
+        Random generator = new Random();
+        id=generator.nextInt(100);
     }
 
     public String getTitle() {
