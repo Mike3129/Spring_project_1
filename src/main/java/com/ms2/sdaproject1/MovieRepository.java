@@ -23,5 +23,14 @@ public class MovieRepository {
         return List.copyOf(filmy.values());
     }
 
+    public void updateMovie(Integer id, Movie movie){
+//        filmy.put(id,movie);
+        filmy.replace(id,movie);
+    }
+
+    public void deleteMovie (Integer id){
+        filmy.remove(id);
+    }
+
 
 }
