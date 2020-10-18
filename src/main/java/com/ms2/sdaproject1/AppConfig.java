@@ -1,5 +1,6 @@
 package com.ms2.sdaproject1;
 
+import com.ms2.sdaproject1.repository.MovieRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

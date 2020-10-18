@@ -1,23 +1,21 @@
-package com.ms2.sdaproject1;
+package com.ms2.sdaproject1.controller;
 
-import com.ms2.sdaproject1.Movie;
-import com.ms2.sdaproject1.MovieNotFoundException;
-import com.ms2.sdaproject1.MovieRepository;
-import com.ms2.sdaproject1.MovieTitleExcpetion;
+import com.ms2.sdaproject1.dto.Movie;
+import com.ms2.sdaproject1.repository.MovieNotFoundException;
+import com.ms2.sdaproject1.repository.MovieRepository;
+import com.ms2.sdaproject1.repository.MovieTitleExcpetion;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
 
 import java.util.*;
 
 
 @Controller
 public class MovieControler {
+
     @Autowired //gdy nie ma konstruktora MovieRepository w klasie to trzeba to dodać.
     MovieRepository movieRepository;
 

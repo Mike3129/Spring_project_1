@@ -1,17 +1,14 @@
-package com.ms2.sdaproject1;
+package com.ms2.sdaproject1.repository;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.ms2.sdaproject1.dto.Movie;
 
 import java.util.*;
 
 // w tej klasie tworzymy klasę metod MovieRepository
 public class MovieRepository {
-    Map<Integer,Movie> filmy = new HashMap<>();
+    Map<Integer, Movie> filmy = new HashMap<>();
 
-    public void addMovie(Movie movie) throws MovieTitleExcpetion{
+    public void addMovie(Movie movie) throws MovieTitleExcpetion {
 
         //stream sprawdzający czy w bazie znajduje się film o podanym tytule
         if (filmy.values().stream().anyMatch(m -> m.getTitle().equals(movie.getTitle())))
